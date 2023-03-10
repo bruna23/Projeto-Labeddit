@@ -1,36 +1,60 @@
-import { Request, Response } from 'express'
-import { UserBusiness } from '../Business/Userbusiness';
+import { Request, Response } from "express"
+import { UserBusiness } from "../business/UserBusiness"
+import { InputLogin, InputSignup} from "../dtos/userDTO"
 
-export class UserController{
+export class UserController {
+    constructor(
+        private userBusiness: UserBusiness
+    ) {}
 
-public createUsers = async (req:Request, res:Response)=>{
-
-try{ 
-        const {  name, email, password } = req.body
-        const user = {
-          name, 
-          email, 
-          password 
-      } 
-
-      const userBusiness = new UserBusiness()
-
-      const active = await userBusiness.businessUsers(user)
-
-      res.status(201).send(`created ${active}`)
-
-    } catch (error) {
-        console.log(error)
-
-        if (req.statusCode === 201) {
-            res.status(500)
+    public signup = async (req: Request, res: Response) => {
+        try {
+            const inputs: InputSignup = {
+                name: req.body.name,
+                email: req.body.email,
+                password: req.body.password
+            }
+            
+            const outputs = await this.userBusiness.signup(inputs)
+    
+            res.status(201).send(outputs)
+        } catch (error) {
+            console.log(error)
+    
+            if (req.statusCode === 200) {
+                res.status(500)
+            }
+    
+            if (error instanceof Error) {
+                res.send(error.message)
+            } else {
+                res.send("Erro inesperado")
+            }
         }
+    }
 
-        if (error instanceof Error) {
-            res.send(error.message)
-        } else {
-            res.send("Erro inesperado")
+    public login = async (req: Request, res: Response) => {
+        try {
+            const inputs: InputLogin = {
+                email: req.body.email,
+                password: req.body.password
+            }
+
+            const outputs = await this.userBusiness.login(inputs)
+    
+            res.status(200).send(outputs)
+        } catch (error) {
+            console.log(error)
+    
+            if (req.statusCode === 200) {
+                res.status(500)
+            }
+    
+            if (error instanceof Error) {
+                res.send(error.message)
+            } else {
+                res.send("Erro inesperado")
+            }
         }
-       }
-
-    }}
+    }
+}

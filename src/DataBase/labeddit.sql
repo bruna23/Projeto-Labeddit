@@ -1,4 +1,4 @@
--- Active: 1676040232967@@127.0.0.1@3306
+-- Active: 1678144304102@@127.0.0.1@3306
 
 CREATE TABLE users (
      id TEXT PRIMARY KEY DEFAULT NULL,
@@ -30,16 +30,16 @@ CREATE TABLE likes_dislikes(
 
 INSERT INTO users (id, name, email, password, role)
 VALUES
-("u001", "Bianca", "bianca_29@gmail.com", "Bianca56_9*0", "user"),
-("u002", "Bruna", "bruna_23@gmail.com", "Br7890_*s2", "user"),
-("u003", "William", "will_kennedy@gmail.com", "will-linkedin90", "user"),
-("u004", "Thiago", "thiagoricardo@gmail.com", "thiagor-78.0", "user"),
-("u005", "Giovanna", "gio912@gmail.com", "gio/*908i0u", "user"),
-("u006", "Mônica", "monica_bispo@gmail.com", "monica-valerio814", "user"),
-("u007", "Paulo", "paulovieira_358@gmail.com", "paulo*ghu54", "user"),
-("u008", "Alan", "targ_alan@gmail.com", "alan_targ987", "user"),
-("u009", "Gleiciane", "glelima3@gmail.com", "gle_lima@wer", "user"),
-("u010", "Sandro", "sandro90ir@gmail.com", "sandro8*ir56", "user");
+("u001", "Bianca", "bianca_29@gmail.com", "Bianca56_9*0", "NORMAL"),
+("u002", "Bruna", "bruna_23@gmail.com", "Br7890_*s2", "ADMIN"),
+("u003", "William", "will_kennedy@gmail.com", "will-linkedin90", "NORMAL"),
+("u004", "Thiago", "thiagoricardo@gmail.com", "thiagor-78.0", "NORMAL"),
+("u005", "Giovanna", "gio912@gmail.com", "gio/*908i0u", "NORMAL"),
+("u006", "Mônica", "monica_bispo@gmail.com", "monica-valerio814", "NORMAL"),
+("u007", "Paulo", "paulovieira_358@gmail.com", "paulo*ghu54", "NORMAL"),
+("u008", "Alan", "targ_alan@gmail.com", "alan_targ987", "NORMAL"),
+("u009", "Gleiciane", "glelima3@gmail.com", "gle_lima@wer", "NORMAL"),
+("u010", "Sandro", "sandro90ir@gmail.com", "sandro8*ir56", "NORMAL");
 
 SELECT * FROM users;
 

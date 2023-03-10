@@ -7,6 +7,7 @@
       "rootDir": "./src", /* Specify the root directory of input files. */
       "removeComments": true, /* Do not emit comments to output. */
       "noImplicitAny": true, /* Raise error on declarations"noEmitOnError": true, /* Disable emitting files if any type checking errors are reported. */
-      "esModuleInterop": true /* Adicione essa linha < */
+      "noEmitOnError": true, /* Disable emitting files if any type checking errors are reported. */
+   "esModuleInterop": true /* Adicione essa linha < */
   }
 }

@@ -1,23 +1,19 @@
-import { UserTypes } from "../types"
+import { UserModel } from "../types"
 
 export interface InputGetUsers {
-    q: string
+    q: unknown,
+    token: string | undefined
 }
 
-export type OutputGetUsers = UserTypes[]
+export type OutputGetUsers = UserModel[]
 
 export interface InputSignup {
     name: unknown,
     email: unknown,
     password: unknown
-}
+}  
 
 export interface OutputSignup {
-    message: string,
-    token: string
-}
-
-export interface OutputLogin {
     message: string,
     token: string
 }
@@ -25,4 +21,9 @@ export interface OutputLogin {
 export interface InputLogin {
     email: unknown,
     password: unknown
+}
+
+export interface OutputLogin {
+    message: string,
+    token: string
 }
