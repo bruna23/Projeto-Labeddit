@@ -13,7 +13,7 @@ export interface GetPostsInput {
     token: string | undefined
 }
 
-export interface EditPostInputDTO {
+export interface EditPostInputDto {
     idToEdit: string,
     content: string | undefined,
     token: string | undefined    

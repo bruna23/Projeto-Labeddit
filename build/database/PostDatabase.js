@@ -11,19 +11,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PostDatabase = void 0;
 const types_1 = require("../types");
-const BaseDatabase_1 = require("./BaseDatabase");
+const BaseDataBase_1 = require("./BaseDataBase");
 const UserDataBase_1 = require("./UserDataBase");
-class PostDatabase extends BaseDatabase_1.BaseDatabase {
+class PostDatabase extends BaseDataBase_1.BaseDatabase {
     constructor() {
         super(...arguments);
         this.getAllPosts = () => __awaiter(this, void 0, void 0, function* () {
-            const postsDB = yield BaseDatabase_1.BaseDatabase
+            const postsDB = yield BaseDataBase_1.BaseDatabase
                 .connection(PostDatabase.TABLE_POSTS)
                 .select();
             return postsDB;
         });
         this.getAllUsers = () => __awaiter(this, void 0, void 0, function* () {
-            const usersDB = yield BaseDatabase_1.BaseDatabase
+            const usersDB = yield BaseDataBase_1.BaseDatabase
                 .connection(UserDataBase_1.UserDataBase.TABLE_USERS)
                 .select();
             return usersDB;
@@ -31,7 +31,7 @@ class PostDatabase extends BaseDatabase_1.BaseDatabase {
         this.getPostsAndUsers = (q) => __awaiter(this, void 0, void 0, function* () {
             let postsDB;
             postsDB = yield this.getAllPosts();
-            const usersDB = yield BaseDatabase_1.BaseDatabase
+            const usersDB = yield BaseDataBase_1.BaseDatabase
                 .connection(UserDataBase_1.UserDataBase.TABLE_USERS)
                 .select();
             return {
@@ -40,29 +40,29 @@ class PostDatabase extends BaseDatabase_1.BaseDatabase {
             };
         });
         this.createPost = (post) => __awaiter(this, void 0, void 0, function* () {
-            yield BaseDatabase_1.BaseDatabase
+            yield BaseDataBase_1.BaseDatabase
                 .connection(PostDatabase.TABLE_POSTS)
                 .insert(post);
         });
         this.findById = (id) => __awaiter(this, void 0, void 0, function* () {
-            const result = yield BaseDatabase_1.BaseDatabase
+            const result = yield BaseDataBase_1.BaseDatabase
                 .connection(PostDatabase.TABLE_POSTS)
                 .select()
                 .where({ id });
             return result[0];
         });
         this.update = (id, postDB) => __awaiter(this, void 0, void 0, function* () {
-            yield BaseDatabase_1.BaseDatabase.connection(PostDatabase.TABLE_POSTS)
+            yield BaseDataBase_1.BaseDatabase.connection(PostDatabase.TABLE_POSTS)
                 .update(postDB)
                 .where({ id });
         });
         this.deleteById = (id) => __awaiter(this, void 0, void 0, function* () {
-            yield BaseDatabase_1.BaseDatabase.connection(PostDatabase.TABLE_POSTS)
+            yield BaseDataBase_1.BaseDatabase.connection(PostDatabase.TABLE_POSTS)
                 .delete()
                 .where({ id });
         });
         this.findPostWithCreatorById = (postId) => __awaiter(this, void 0, void 0, function* () {
-            const result = yield BaseDatabase_1.BaseDatabase
+            const result = yield BaseDataBase_1.BaseDatabase
                 .connection(PostDatabase.TABLE_POSTS)
                 .select("posts.id", "posts.creator_id", "posts.content", "posts.likes", "posts.dislikes", "posts.created_at", "posts.updated_at")
                 .join("users", "posts.creator_id", "=", "users.id")
@@ -70,11 +70,11 @@ class PostDatabase extends BaseDatabase_1.BaseDatabase {
             return result[0];
         });
         this.likeOrDislikePost = (likeDislike) => __awaiter(this, void 0, void 0, function* () {
-            yield BaseDatabase_1.BaseDatabase.connection(PostDatabase.TABLE_LIKES_DISLIKES)
+            yield BaseDataBase_1.BaseDatabase.connection(PostDatabase.TABLE_LIKES_DISLIKES)
                 .insert(likeDislike);
         });
         this.findLikeDislike = (likeDislikeDBToFind) => __awaiter(this, void 0, void 0, function* () {
-            const [likeDislikeDB] = yield BaseDatabase_1.BaseDatabase
+            const [likeDislikeDB] = yield BaseDataBase_1.BaseDatabase
                 .connection(PostDatabase.TABLE_LIKES_DISLIKES)
                 .select()
                 .where({
@@ -91,7 +91,7 @@ class PostDatabase extends BaseDatabase_1.BaseDatabase {
             }
         });
         this.removeLikeDislike = (likeDislikeDB) => __awaiter(this, void 0, void 0, function* () {
-            yield BaseDatabase_1.BaseDatabase.connection(PostDatabase.TABLE_LIKES_DISLIKES)
+            yield BaseDataBase_1.BaseDatabase.connection(PostDatabase.TABLE_LIKES_DISLIKES)
                 .delete()
                 .where({
                 user_id: likeDislikeDB.user_id,
@@ -99,7 +99,7 @@ class PostDatabase extends BaseDatabase_1.BaseDatabase {
             });
         });
         this.updateLikeDislike = (likeDislikeDB) => __awaiter(this, void 0, void 0, function* () {
-            yield BaseDatabase_1.BaseDatabase.connection(PostDatabase.TABLE_LIKES_DISLIKES)
+            yield BaseDataBase_1.BaseDatabase.connection(PostDatabase.TABLE_LIKES_DISLIKES)
                 .update(likeDislikeDB)
                 .where({
                 user_id: likeDislikeDB.user_id,

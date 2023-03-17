@@ -24,4 +24,4 @@ BaseDatabase.connection = (0, knex_1.knex)({
         },
     },
 });
-//# sourceMappingURL=BaseDatabase.js.map
+//# sourceMappingURL=BaseDataBase.js.map

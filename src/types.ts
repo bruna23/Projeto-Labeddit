@@ -16,13 +16,27 @@ export interface PostWithCreatorDB extends PostDB {
 export interface LikeDislikeDB {
     user_id: string,
     post_id: string,
-    like: number
+    like: number,
+    
+}
+
+export interface LikeDislikeCommentDB {
+    user_id: string,
+    post_id: string,
+    like: number,
+    comment_id: string,
+    
 }
 
 export enum POST_LIKE {
     ALREADY_LIKED = "ALREADY LIKED",
     ALREADY_DISLIKED = "ALREADY DISLIKED"
 }
+
+export enum COMMENT_LIKE {
+    ALREADY_LIKED = "ALREADY LIKED",
+    ALREADY_DISLIKED = "ALREADY DISLIKED"
+  }
 
 export interface UserDB {
     id: string,
@@ -64,6 +78,39 @@ export interface PostModel {
         name: string
     } 
 
-
-    
 }
+    
+export interface CommentDB {
+    id: string,
+    post_id: string,
+    content: string,
+    likes: number,
+    dislikes: number,
+    created_at: string,
+    updated_at: string,
+    creator_id: string
+  }
+
+export interface CommentModel {
+    id: string,
+    postId: string,
+    content: string,
+    likes: number,
+    dislikes: number,
+    createdAt: string,
+    updatedAt: string,
+    creatorId: string,
+    creatorName: string
+  }
+  
+  export interface CommentCreatorDB {
+    id: string,
+    post_id: string,
+    content: string,
+    likes: number,
+    dislikes: number,
+    created_at: string,
+    updated_at: string,
+    creator_id: string,
+    creator_name: string
+  }

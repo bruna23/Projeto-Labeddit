@@ -1,5 +1,5 @@
 import { PostDatabase } from "../database/PostDatabase";
-import {CreatePostInput, CreatePostOutput, DeletePostInput, EditPostInputDTO, GetPostsInput, LikeOrDislikePostInput,
+import {CreatePostInput, CreatePostOutput, DeletePostInput, EditPostInputDto, GetPostsInput, LikeOrDislikePostInput,
 } from "../dtos/postDTO";
 import { BadRequestError } from "../errors/BadRequestError";
 import { NotFoundError } from "../errors/NotFoundError";
@@ -59,7 +59,7 @@ export class PostBusiness {
         name: creator.name,
       };
     }
-    // modela o DTO para a resposta
+    
     return posts;
   };
 
@@ -104,7 +104,7 @@ export class PostBusiness {
     return output;
   };
 
-  public editPost = async (input: EditPostInputDTO): Promise<void> => {
+  public editPost = async (input: EditPostInputDto): Promise<void> => {
     const { idToEdit, token, content } = input;
 
     if (token === undefined) {

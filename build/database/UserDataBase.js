@@ -10,12 +10,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserDataBase = void 0;
-const BaseDatabase_1 = require("./BaseDatabase");
-class UserDataBase extends BaseDatabase_1.BaseDatabase {
+const BaseDataBase_1 = require("./BaseDataBase");
+class UserDataBase extends BaseDataBase_1.BaseDatabase {
     constructor() {
         super(...arguments);
         this.getAllUsers = () => __awaiter(this, void 0, void 0, function* () {
-            const usersDB = yield BaseDatabase_1.BaseDatabase
+            const usersDB = yield BaseDataBase_1.BaseDatabase
                 .connection(UserDataBase.TABLE_USERS)
                 .select();
             return usersDB;
@@ -23,7 +23,7 @@ class UserDataBase extends BaseDatabase_1.BaseDatabase {
     }
     findUserByEmail(email) {
         return __awaiter(this, void 0, void 0, function* () {
-            const [userDB] = yield BaseDatabase_1.BaseDatabase
+            const [userDB] = yield BaseDataBase_1.BaseDatabase
                 .connection(UserDataBase.TABLE_USERS)
                 .where({ email });
             return userDB;
@@ -31,7 +31,7 @@ class UserDataBase extends BaseDatabase_1.BaseDatabase {
     }
     insertUser(newUserDB) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield BaseDatabase_1.BaseDatabase
+            yield BaseDataBase_1.BaseDatabase
                 .connection(UserDataBase.TABLE_USERS)
                 .insert(newUserDB);
         });

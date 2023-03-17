@@ -1,5 +1,6 @@
 import { UserDB } from "../types";
-import { BaseDatabase } from "./BaseDatabase";
+import { BaseDatabase } from "./BaseDataBase";
+import { CommentBusiness } from "../business/CommentBusiness";
 
 export class UserDataBase extends BaseDatabase {
     public static TABLE_USERS = "users"

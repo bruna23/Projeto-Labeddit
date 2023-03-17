@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 import { afterEach } from "node:test"
 import { PostBusiness } from "../business/PostBusiness"
-import { CreatePostInput, DeletePostInput, EditPostInputDTO, GetPostsInput, LikeOrDislikePostInput } from "../dtos/postDTO"
+import { CreatePostInput, DeletePostInput, EditPostInputDto, GetPostsInput, LikeOrDislikePostInput } from "../dtos/postDTO"
 
 export class PostController {
     constructor(private postBusiness: PostBusiness){}
@@ -53,7 +53,7 @@ export class PostController {
 
     public editPost = async (req: Request, res: Response) => {
       try {
-        const input: EditPostInputDTO = {
+        const input: EditPostInputDto = {
           idToEdit: req.params.id,
           content: req.body.content,
           token: req.headers.authorization as string
